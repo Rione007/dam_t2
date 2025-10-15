@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DAM_T2_VILLEGAS">
         <activity
+            android:name=".view.activities.RegistroActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.activities.ReminderActivity"
             android:exported="false"
             android:label="@string/title_activity_reminder"

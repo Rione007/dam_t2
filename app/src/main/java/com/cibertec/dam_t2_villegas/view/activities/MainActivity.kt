@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -26,6 +27,7 @@ class MainActivity : AppCompatActivity() {
         val txtUser = findViewById<EditText>(R.id.txtUser)
         val txtPassword = findViewById<EditText>(R.id.txtPassword)
         val btnLogin = findViewById<Button>(R.id.btnLogin)
+        val txtRegistro = findViewById<TextView>(R.id.txtRegistro)
 
         btnLogin.setOnClickListener {
             val usertxt = txtUser.text.toString()
@@ -36,14 +38,28 @@ class MainActivity : AppCompatActivity() {
                 onSuccess = {
                     User ->
                     Toast.makeText(this, "Bienvenido ${User.fullname}", Toast.LENGTH_SHORT).show()
+                    val prefs = getSharedPreferences("user_session", MODE_PRIVATE)
+                    prefs.edit().apply {
+                        putInt("id", User.id)
+                        putString("fullname", User.fullname)
+                        apply()
+                    }
+
                     val intent = Intent(this, ReminderActivity::class.java)
                     startActivity(intent)
                     finish()
                 }
               ,
                 onError = {
-                    Toast.makeText(this, "Credenciales Incorrectas", Toast.LENGTH_SHORT).show()
+                    exception -> Toast.makeText(this, "${exception.message}", Toast.LENGTH_SHORT).show()
                 })
+
+        }
+
+        txtRegistro.setOnClickListener {
+            val intent = Intent(this, RegistroActivity::class.java)
+            startActivity(intent)
+            finish()
         }
 
         enableEdgeToEdge()
@@ -54,4 +70,6 @@ class MainActivity : AppCompatActivity() {
             insets
         }
     }
+
+
 }

@@ -14,8 +14,8 @@ interface ReminderDao {
     @Query("SELECT * FROM tb_reminders")
     suspend fun getAllReminder(): List<Reminder>
 
-    @Query("SELECT * FROM tb_reminders r JOIN tb_user u ON r.id_user = u.id WHERE u.id = :id")
-    suspend fun getReminderByUserId(id: Int): Reminder
+    @Query("SELECT * FROM tb_reminders WHERE id_user = :id")
+    suspend fun getRemindersByUserId(id: Int): List<Reminder>
 
     @Query("SELECT * FROM tb_reminders WHERE id  = :id")
     suspend fun getReminderById(id: Int): Reminder

@@ -1,6 +1,7 @@
 package com.cibertec.dam_t2_villegas.controller
 
 import android.content.Context
+import androidx.room.Insert
 import com.cibertec.dam_t2_villegas.model.User
 import com.cibertec.dam_t2_villegas.model.Validar
 import com.cibertec.dam_t2_villegas.model.db.AppDatabase
@@ -27,9 +28,34 @@ class UserController(context: Context) {
     ) {
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                val userValid = repository.validarUser(user.user,user.passwod)
+                val user = repository.validarUser(user.user,user.passwod)
                 withContext(Dispatchers.Main) {
-                    onSuccess(userValid)
+                    if (user != null) {
+                        onSuccess(user)
+                    } else {
+                        onError(Exception("Credenciales incorrectas"))
+                    }
+                }
+            } catch (e: Exception) {
+                onError(e)
+            }
+        }
+    }
+
+    fun insertarUser(
+        user: User,
+        onInsert: () -> Unit = {},
+        onError: (Exception) -> Unit = {}
+    ) {
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                repository.insert(user)
+                withContext(Dispatchers.Main) {
+                    if (user != null) {
+                        onInsert()
+                    } else {
+                        onError(Exception("Error al registrarse"))
+                    }
                 }
             } catch (e: Exception) {
                 onError(e)

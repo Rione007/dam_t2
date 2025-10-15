@@ -8,13 +8,16 @@ import androidx.core.view.WindowInsetsCompat
 import com.cibertec.dam_t2_villegas.R
 
 class ReminderActivity : AppCompatActivity() {
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_reminder)
 
-
-
+        val prefs = getSharedPreferences("user_session", MODE_PRIVATE)
+        val userid = prefs.getInt("id", -1)
+        val fullname = prefs.getString("fullname", "")
 
 
 

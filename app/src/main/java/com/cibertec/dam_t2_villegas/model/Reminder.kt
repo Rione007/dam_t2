@@ -2,7 +2,6 @@ package com.cibertec.dam_t2_villegas.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.util.Date
 
 @Entity(tableName = "tb_reminders")
 class Reminder {
@@ -11,13 +10,13 @@ class Reminder {
     var id: Int = 0
     var title: String = ""
     var description: String = ""
-    var date_reminder: String = ""
+    var dateReminder: String = ""
     var id_user: Int = 0
 
-    constructor(title: String, description: String, date_reminder: String, id_user: Int) {
+    constructor(title: String, description: String, dateReminder: String, id_user: Int) {
         this.title = title
         this.description = description
-        this.date_reminder = date_reminder
+        this.dateReminder = dateReminder
         this.id_user = id_user
     }
 }

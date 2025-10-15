@@ -1,6 +1,6 @@
 package com.cibertec.dam_t2_villegas.model.dao
 
-import android.R
+
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert

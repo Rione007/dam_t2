@@ -37,7 +37,7 @@
             android:layout_marginTop="4dp">
 
             <TextView
-                android:id="@+id/lblStoreAddress"
+                android:id="@+id/fullnametitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="User fullname"
@@ -55,6 +55,22 @@
         app:layout_constraintTop_toBottomOf="@id/linearLayoutHeader"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" >
+    </androidx.recyclerview.widget.RecyclerView>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.954"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.976"
+        app:srcCompat="@drawable/ic_plus" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
