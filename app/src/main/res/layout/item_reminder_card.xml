@@ -31,14 +31,6 @@
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/txtProductInfo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Descripcion"
-                android:textColor="#555555"
-                android:textSize="14sp" />
         </LinearLayout>
 
         <LinearLayout

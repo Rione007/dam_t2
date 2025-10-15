@@ -12,12 +12,12 @@ import com.cibertec.dam_t2_villegas.model.Reminder
 class ReminderAdapter (
     private var reminders: List<Reminder>,
     private val onDeleteClick: (Reminder) -> Unit,
-    private val onEditClick: (Reminder) -> Unit
+    private val onEditClick: (Reminder) -> Unit,
+    private val onItemClick: (Reminder) ->Unit,
 ) : RecyclerView.Adapter<ReminderAdapter.ProductViewHolder>() {
 
     class ProductViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val txtProductDesc: TextView = itemView.findViewById(R.id.txtProductDesc)
-        val txtProductInfo: TextView = itemView.findViewById(R.id.txtProductInfo)
         val btnDelete: ImageView = itemView.findViewById(R.id.btnDelete)
         val btnEdit: ImageView = itemView.findViewById(R.id.btnEdit)
     }
@@ -30,8 +30,12 @@ class ReminderAdapter (
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
         val product = reminders[position]
+
         holder.txtProductDesc.text = product.title
-        holder.txtProductInfo.text = product.description
+
+        holder.itemView.setOnClickListener {
+            onItemClick(product)
+        }
 
         holder.btnDelete.setOnClickListener {
             onDeleteClick(product)

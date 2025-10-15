@@ -48,7 +48,7 @@
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvProducts"
+        android:id="@+id/rvReminders"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:padding="16dp"
@@ -57,6 +57,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" >
     </androidx.recyclerview.widget.RecyclerView>
+
+    <FrameLayout
+        android:id="@+id/frameDetail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+    </FrameLayout>
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

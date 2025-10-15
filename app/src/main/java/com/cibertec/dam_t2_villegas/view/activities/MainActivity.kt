@@ -18,6 +18,7 @@ import com.cibertec.dam_t2_villegas.model.Validar
 class MainActivity : AppCompatActivity() {
 
     private lateinit var userController : UserController
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

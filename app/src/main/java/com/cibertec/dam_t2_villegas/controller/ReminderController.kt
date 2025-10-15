@@ -20,7 +20,7 @@ class ReminderController(context: Context) {
         repository = ReminderRepository(db.reminderDao())
     }
 
-    fun insert (
+    fun insert(
         reminder: Reminder,
         onInserted: () -> Unit = {},
         onError: (Exception) -> Unit = {}
@@ -32,10 +32,13 @@ class ReminderController(context: Context) {
                     onInserted()
                 }
             } catch (e: Exception) {
-                onError(e)
+                withContext(Dispatchers.Main) {
+                    onError(e)
+                }
             }
         }
     }
+
 
     fun getAllReminder(
         onStart: () -> Unit = {},
@@ -49,8 +52,11 @@ class ReminderController(context: Context) {
                     onSuccess(lista)
                 }
             } catch (e: Exception) {
-                onError(e)
+                withContext(Dispatchers.Main) {
+                    onError(e)
+                }
             }
         }
     }
+
 }
